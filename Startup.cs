@@ -13,6 +13,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using MySql.EntityFrameworkCore;
+
+
 
 namespace Fag_el_Gamous
 {
@@ -46,6 +49,12 @@ namespace Fag_el_Gamous
                 options.Password.RequiredLength = 12;
             });
 
+            services.AddHsts(options =>
+            {
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(365);
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -69,6 +78,7 @@ namespace Fag_el_Gamous
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -78,10 +88,12 @@ namespace Fag_el_Gamous
             app.UseAuthentication();
             app.UseAuthorization();
 
+           
+
             app.Use(async (context, next) =>
             {
-                context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'; front-src 'self'; img-src 'self'; frame-src 'self'");
-
+                string scriptHash = "'sha256-m1igTNlg9PL5o60ru2HIIK6OPQet2z9UgiEAhCyg/RU='";
+                context.Response.Headers.Add("Content-Security-Policy", $"default-src 'self'; script-src 'self' http://www.w3.org {scriptHash} 'nonce-J0joD1o'; font-src 'self'; img-src 'self' http://www.w3.org data:; frame-src 'self'; style-src 'self' 'unsafe-hashes' 'sha256-aqNNdDLnnrDOnTNdkJpYlAxKVJtLt9CtFLklmInuUAE='");
                 await next();
             });
 

@@ -1,0 +1,20 @@
+
+{
+    "region" : "us-east-1",
+    "configuration" : "Debug",
+    "framework"     : "netcoreapp3.1",
+    "self-contained" : false,
+    "application"    : "FagelGamous",
+    "environment"    : "FagelGamous-dev",
+    "enable-xray"    : false,
+    "enhanced-health-type" : "basic",
+    "additional-options"   : "\"aws:autoscaling:launchconfiguration,SecurityGroups\"=\"sg-0cb6a0cae30b5b863\";\"aws:ec2:vpc,Subnets\"=\"subnet-0e4e84741f92559f5\"",
+    "solution-stack"       : "64bit Amazon Linux 2 v2.5.2 running .NET Core",
+    "environment-type"     : "SingleInstance",
+    "cname"                : "fagelgamous-dev",
+    "instance-type"        : "t3a.medium",
+    "key-pair"             : "",
+    "instance-profile"     : "aws-elasticbeanstalk-ec2-role",
+    "service-role"         : "aws-elasticbeanstalk-service-role",
+    "proxy-server"         : "nginx"
+}
