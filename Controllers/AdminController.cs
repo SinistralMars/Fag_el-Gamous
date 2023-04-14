@@ -6,6 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fag_el_Gamous.Models;
 
+// This controller handles administrative tasks such as listing and deleting users
+// in the Fag_el_Gamous web application
+
+
 
 namespace Fag_el_Gamous.Controllers
 {
@@ -15,12 +19,14 @@ namespace Fag_el_Gamous.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
 
+        // Constructor for dependency injection of UserManager and SignInManager
         public AdminController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
         }
 
+        // Action method to display a list of users
         public IActionResult ListUsers()
         {
             var users = _userManager.Users;
@@ -28,6 +34,7 @@ namespace Fag_el_Gamous.Controllers
             return View(users);
         }
 
+        // Action method to delete a user by their userId
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string userId)
         {

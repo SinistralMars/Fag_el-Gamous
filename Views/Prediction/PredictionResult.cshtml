@@ -1,4 +1,16 @@
-﻿@model ApiResponse
+﻿<!--
+This is the "PredictionResult.cshtml" file, which is a Razor view that displays the prediction result of the head direction of a burial.
+ The view receives an ApiResponse model that contains the predicted value.
+
+The view checks if the ApiResponse model and its PredictedValue property are not null, indicating that a prediction result is available.
+ If so, it displays the prediction result within an informational alert. If no prediction result is available, it displays a warning 
+ message in an alert.
+
+After displaying the prediction result or the warning message, a "Go back to form" button is provided to navigate back to the form for 
+submitting another set of burial data for prediction.
+-->
+
+@model ApiResponse
 
 @{
     ViewData["Title"] = "Prediction Result";

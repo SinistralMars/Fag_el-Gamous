@@ -4,6 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
+// This code implements the IFagelGamousRepository interface in the EFFagelGamousRepository class,
+// providing concrete functionality for interacting with the NewTable data model using the Entity Framework.
+// It defines methods for querying, adding, updating, and deleting records, as well as saving changes to the
+// BurialContext database context.
 
 namespace Fag_el_Gamous.Models
 {

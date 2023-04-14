@@ -2,6 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+// This code defines the BurialContext class, which inherits from DbContext
+// and serves as the main point of interaction with the database for the Fag_el_Gamous project.
+// It includes DbSet properties for the NewTable model and methods for configuring and building the Entity Framework
+// model, as well as a partial method for extending the model building process.
+
+
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable

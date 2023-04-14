@@ -32,6 +32,15 @@ namespace Fag_el_Gamous
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var configBuilder = new ConfigurationBuilder()
+            .AddUserSecrets<Startup>();
+
+            IConfiguration config = configBuilder.Build();
+
+            string mainConnection = config["MainConnection"];
+            string burialConnection = config["BurialConnection"];
+
+
             services.AddScoped<IFagelGamousRepository, EFFagelGamousRepository>();
 
             services.Configure<CookiePolicyOptions>(options =>
@@ -65,13 +74,13 @@ namespace Fag_el_Gamous
             //Database for user authentication
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySQL(Configuration["ConnectionStrings:MainConnection"]);
+                options.UseMySQL(mainConnection);
             });
 
             //Database for burial info
             services.AddDbContext<BurialContext>(options =>
             {
-                options.UseNpgsql(Configuration["ConnectionStrings:BurialConnection"]);
+                options.UseNpgsql(burialConnection);
             });
 
             //services.AddDbContext<ApplicationDbContext>(options =>

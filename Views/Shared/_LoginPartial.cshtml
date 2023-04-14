@@ -1,4 +1,12 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿<!-- 
+This Razor partial view is responsible for displaying user authentication-related navigation items in the Fag el-Gamous web application.
+It uses the SignInManager and UserManager from ASP.NET Core Identity to handle user sign-in and account management. 
+When a user is signed in, it displays a personalized greeting with the user's name and a logout button. 
+If the user is not signed in, it provides buttons for registration and login. 
+The navigation items are displayed as an unordered list with appropriate classes for styling.
+-->
+
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 

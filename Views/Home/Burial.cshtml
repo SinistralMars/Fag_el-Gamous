@@ -1,117 +1,152 @@
 ﻿@{
+    // Set the page title
     ViewData["Title"] = "Burial Summary List and Burial Record Pages";
 }
+
+@* This page shows all the burial records, paginated, and also has a panel on the side that allows
+    you to filter.  *@
+
 
 @model ProjectsViewModel
 
 <div class="container">
+    @* Display the page title *@
     <div class="text-center my-4">
         <h1 class="display-4">@ViewData["Title"]</h1>
     </div>
-    <form asp-action="Burial" method="get">
-        <div>
-            <label for="sex">Sex:</label>
-            <input type="text" name="sex" value="@Model.FilterSex" />
-        </div>
 
-        <div>
-            <label for="hairColor">Hair Color:</label>
-            <input type="text" name="hairColor" value="@Model.FilterHairColor" />
-        </div>
+    <div class="row">
+        @* Side panel with form filters *@
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Filter Burial Records</h5>
+                    @* Create a form to filter burial records *@
+                    <form asp-action="Burial" method="get">
+                        @* Sex filter input *@
+                        <div>
+                            <label for="sex">Sex:</label>
+                            <input type="text" name="sex" value="@Model.FilterSex" />
+                        </div>
 
-        <div>
-            <label for="faceBundles">Face Bundles:</label>
-            <input type="text" name="faceBundles" value="@Model.FilterFaceBundles" />
-        </div>
+                        @* Hair color filter input *@
+                        <div>
+                            <label for="hairColor">Hair Color:</label>
+                            <input type="text" name="hairColor" value="@Model.FilterHairColor" />
+                        </div>
 
-        <div>
-            <label for="ageAtDeath">Age at Death:</label>
-            <input type="text" name="ageAtDeath" value="@Model.FilterAgeAtDeath" />
-        </div>
+                        @* Face bundles filter input *@
+                        <div>
+                            <label for="faceBundles">Face Bundles:</label>
+                            <input type="text" name="faceBundles" value="@Model.FilterFaceBundles" />
+                        </div>
 
-        <div>
-            <label for="headDirection">Head Direction:</label>
-            <input type="text" name="headDirection" value="@Model.FilterHeadDirection" />
-        </div>
+                        @* Age at death filter input *@
+                        <div>
+                            <label for="ageAtDeath">Age at Death:</label>
+                            <input type="text" name="ageAtDeath" value="@Model.FilterAgeAtDeath" />
+                        </div>
 
-        <div>
-            <label for="depth">Depth:</label>
-            <input type="text" step="any" name="depth" value="@Model.FilterDepth" />
-        </div>
-        <!-- ... (existing filters) -->
-        <!-- new filter inputs -->
-        <div>
-            <label for="Estimatestature">Estimated Stature:</label>
-            <input type="int" name="estimateStature" value="@Model.FilterEstimateStature" />
-        </div>
+                        @* Head direction filter input *@
+                        <div>
+                            <label for="headDirection">Head Direction:</label>
+                            <input type="text" name="headDirection" value="@Model.FilterHeadDirection" />
+                        </div>
 
-        <div>
-            <label for="StructureValue">Structure Value:</label>
-            <input type="text" name="structureValue" value="@Model.FilterStructureValue" />
-        </div>
+                        @* Depth filter input *@
+                        <div>
+                            <label for="depth">Depth:</label>
+                            <input type="text" step="any" name="depth" value="@Model.FilterDepth" />
+                        </div>
+                        @* ... (existing filters) *@
 
-        <div>
-            <label for="ColorValue">Color Value:</label>
-            <input type="text" name="colorValue" value="@Model.FilterColorValue" />
-        </div>
+                        @* New filters *@
 
-        <div>
-            <label for="TextileFunctionValue">Textile Function Value:</label>
-            <input type="text" name="textileFunctionValue" value="@Model.FilterTextileFunctionValue" />
-        </div>
+                        @* Estimated stature filter input *@
+                        <div>
+                            <label for="Estimatestature">Estimated Stature:</label>
+                            <input type="int" name="estimateStature" value="@Model.FilterEstimateStature" />
+                        </div>
 
+                        @* Structure value filter input *@
+                        <div>
+                            <label for="StructureValue">Structure Value:</label>
+                            <input type="text" name="structureValue" value="@Model.FilterStructureValue" />
+                        </div>
 
+                        @* Color value filter input *@
+                        <div>
+                            <label for="ColorValue">Color Value:</label>
+                            <input type="text" name="colorValue" value="@Model.FilterColorValue" />
+                        </div>
 
-        <input type="submit" value="Filter" />
+                        @* Textile function value filter input *@
+                        <div>
+                            <label for="TextileFunctionValue">Textile Function Value:</label>
+                            <input type="text" name="textileFunctionValue" value="@Model.FilterTextileFunctionValue" />
+                        </div>
 
-        @if (User.Identity.IsAuthenticated)
-        {
-            <a asp-action="Add" class="btn btn-primary">Add Burial Record</a>
-        }
-
-    </form>
-
-    <br />
-
-    @foreach (NewTable b in Model.NewTable)
-    {
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">ID: @b.Id</h3>
-                        <ul class="list-unstyled">
-                            <li>headdirection: @b.Headdirection</li>
-                            <li>sex: @b.Sex</li>
-                            <li>depth: @b.Depth</li>
-                            <li>adultsubadult: @b.Adultsubadult</li>
-                            <li>text: @b.Text</li>
-                            <li>Hair Color: @b.Haircolor</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a asp-action="Details" asp-route-id="@b.Id" class="btn btn-primary">View Details</a>
-                    </div>
+                        @* Filter button *@
+                        <input type="submit" value="Filter" class="btn btn-sm btn-primary" />
+                    </form>
                 </div>
             </div>
+            @* If the user is authenticated, display the 'Add Burial Record' button *@
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="my-3 text-center">
+                    <a asp-action="Add" class="btn btn-primary">Add Burial Record</a>
+                </div>
+            }
         </div>
-        <br />
-    }
+        @*Main content with burial records*@
+        <div class="col-md-9">
+            @* Loop through the burial records and display them *@
+            @foreach (NewTable b in Model.NewTable)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">ID: @b.Id</h3>
+                                @* Display various burial record attributes *@
+                                <ul class="list-unstyled">
+                                    <li>headdirection: @b.Headdirection</li>
+                                    <li>sex: @b.Sex</li>
+                                    <li>depth: @b.Depth</li>
+                                    <li>adultsubadult: @b.Adultsubadult</li>
+                                    <li>text: @b.Text</li>
+                                    <li>Hair Color: @b.Haircolor</li>
+                                </ul>
+                            </div>
+                            @* Button to view more details for each burial record *@
+                            <div class="card-footer">
+                                <a asp-action="Details" asp-route-id="@b.Id" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
+            <br />
+            @* Pagination element with filtering parameters *@
+            <div page-model="@Model.PageInfo" page-action="Burial" page-classes-enabled="true"
+                 page-class="btn" page-class-normal="btn-outline-dark"
+                 page-class-selected="btn-primary" class="btn-group pull-right m-1"
+                 filter-sex="@Model.FilterSex"
+                 filter-hair-color="@Model.FilterHairColor"
+                 filter-face-bundles="@Model.FilterFaceBundles"
+                 filter-age-at-death="@Model.FilterAgeAtDeath"
+                 filter-head-direction="@Model.FilterHeadDirection"
+                 filter-depth="@Model.FilterDepth"
+                 filter-estimate-stature="@Model.FilterEstimateStature"
+                 filter-structure-value="@Model.FilterStructureValue"
+                 filter-color-value="@Model.FilterColorValue"
+                 filter-textile-function-value="@Model.FilterTextileFunctionValue"></div>
 
+        </div>
+    </div>
     <br />
-    <div page-model="@Model.PageInfo" page-action="Burial" page-classes-enabled="true"
-         page-class="btn" page-class-normal="btn-outline-dark"
-         page-class-selected="btn-primary" class="btn-group pull-right m-1"
-         filter-sex="@Model.FilterSex"
-         filter-hair-color="@Model.FilterHairColor"
-         filter-face-bundles="@Model.FilterFaceBundles"
-         filter-age-at-death="@Model.FilterAgeAtDeath"
-         filter-head-direction="@Model.FilterHeadDirection"
-         filter-depth="@Model.FilterDepth"
-         filter-estimate-stature="@Model.FilterEstimateStature"
-         filter-structure-value="@Model.FilterStructureValue"
-         filter-color-value="@Model.FilterColorValue"
-         filter-textile-function-value="@Model.FilterTextileFunctionValue"></div>
-
+    <br />
+    <br />
 </div>
-<br /><br /><br />

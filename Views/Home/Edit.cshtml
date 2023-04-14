@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit Burial";
 }
 
-
+<!-- here the user can edit the burial info -->
 
 <form asp-action="Edit" asp-controller="Home" method="post">
     <h1>@ViewData["Title"]</h1>
@@ -163,10 +163,9 @@
         <label asp-for="TextileFunctionValue">Textile Function Value:</label>
         <input asp-for="TextileFunctionValue" class="form-control" />
     </div>
-    ...
 
 
-
+    @* Here the user can choose to submit the changes*@
     <button type="submit" class="btn btn-primary">Save Changes</button>
     <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary">Cancel</a>
 </form>

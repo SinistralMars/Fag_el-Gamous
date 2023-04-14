@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿<!-- 
+This HTML template represents the main layout of the Fag el-Gamous web application. 
+It includes the head section with required meta tags, stylesheets, and the responsive viewport configuration. 
+The body section consists of a header with a navigation bar, a main content container, and a footer. 
+The navigation bar provides links to different pages within the application, and a dropdown menu for analysis options. 
+The layout also includes partial views for login and cookie consent. 
+The footer contains copyright information and a link to the privacy policy. 
+The required JavaScript libraries and site-specific scripts are included at the end of the body section.
+-->
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -39,7 +49,7 @@
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark nav-link-text" asp-area="" asp-controller="Home" asp-action="Admin">Administrative</a>
+                                    <a class="nav-link text-dark nav-link-text" asp-area="Identity" asp-page="/Account/Manage/Index">Administrative</a>
                                 </li>
                             }
 

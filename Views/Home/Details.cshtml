@@ -5,6 +5,7 @@
 
 <h1>@ViewData["Title"]</h1>
 
+@* Displays all the details of the item*@
 <dl class="row">
     <dt class="col-sm-3">ID:</dt>
     <dd class="col-sm-9">@Model.Id</dd>
@@ -85,13 +86,15 @@
     <dt class="col-sm-3">Textile Function Value:</dt>
     <dd class="col-sm-9">@Model.TextileFunctionValue</dd>
 </dl>
+
+@*If the user is authenticated, the have the option to edit or delete the record *@
 <div class="mt-4">
     @if (User.Identity.IsAuthenticated)
     {
         <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
         <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
-
     }
 
+    @*here the user can choose to return to the the main list of burials *@
     <a asp-action="Burial" class="btn btn-secondary">Back to List</a>
-    </div>
+</div>

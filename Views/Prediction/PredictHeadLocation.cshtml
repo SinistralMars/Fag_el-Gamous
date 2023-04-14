@@ -1,4 +1,16 @@
-﻿@model BurialDataModel
+﻿<!--
+This is the "PredictionHeadLocation.cshtml" file, which is a Razor view for predicting the head direction of a burial based 
+on the input data. The view displays a form that collects various data points related to the burial, such as square coordinates, 
+depth, dimensions, sex, wrapping, hair color, samples collected, area, and age at death.
+
+The form is submitted using a POST request to the "Submit" action method of the controller, which processes the input data and 
+returns the predicted head direction. The form contains several input fields, each with a label and a corresponding input element. 
+The input elements use the "asp-for" attribute to bind their values to the properties of the BurialDataModel.
+
+Upon submission, the form data is sent to the server for processing and the predicted head direction is returned to the user.
+-->
+
+@model BurialDataModel
 
     @{
         ViewData["Title"] = "Predict Head Direction";
@@ -6,6 +18,8 @@
 
     <form asp-action="Submit" method="post">
         <h2>Predict Head Direction</h2>
+        <p>Please enter categorical variables as 1 (true) or 0 (false). Categorical variables begin at Sex (Female) and include all features below that.</p>
+        <p>Additionally, for a given type of categorical variable only one option should be selected and have a 1 (true). </p>
         <div class="form-group">
             <label asp-for="SquareNorthSouth"></label>
             <input asp-for="SquareNorthSouth" class="form-control" />

@@ -1,4 +1,8 @@
-﻿@using Microsoft.AspNetCore.Http.Features
+﻿<!-- 
+This Razor partial view handles the display and functionality of the cookie consent banner. It checks whether the user has already provided consent for tracking cookies. If consent has not been given, it shows a banner at the top of the page informing the user about the cookie policy and providing a link to learn more. Upon clicking "Accept," the banner is dismissed, and a tracking consent cookie is set in the user's browser to remember their preference.
+-->
+
+@using Microsoft.AspNetCore.Http.Features
 
 @{
     var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
