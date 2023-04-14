@@ -1,0 +1,23 @@
+﻿@model ApiResponse
+
+@{
+    ViewData["Title"] = "Prediction Result";
+}
+
+<h2>Prediction Result</h2>
+
+@if (Model != null && Model.PredictedValue != null)
+{
+    <div class="alert alert-info mt-3">
+        <strong>Prediction:</strong> @Model.PredictedValue
+    </div>
+ }
+else
+{
+    <div class="alert alert-warning mt-3">
+        <strong>Warning:</strong> No prediction result available.
+    </div>
+}
+
+<a class="btn btn-primary" asp-controller="Prediction" asp-action="Index">Go back to form</a>
+

@@ -1,0 +1,195 @@
+﻿@model CreateBurialViewModel
+
+<form asp-action="Add" method="post">
+    <div>
+        <label for="Squarenorthsouth">Square North South:</label>
+        <input type="text" asp-for="Burial.Squarenorthsouth" />
+    </div>
+
+    <div>
+        <label for="Headdirection">Head Direction:</label>
+        <input type="text" asp-for="Burial.Headdirection" />
+    </div>
+
+    <div>
+        <label for="Sex">Sex:</label>
+        <input type="text" asp-for="Burial.Sex" />
+    </div>
+
+    <div>
+        <label for="Northsouth">North South:</label>
+        <input type="text" asp-for="Burial.Northsouth" />
+    </div>
+
+    <div>
+        <label for="Depth">Depth:</label>
+        <input type="text" asp-for="Burial.Depth" />
+    </div>
+
+    <div>
+        <label for="Eastwest">East West:</label>
+        <input type="text" asp-for="Burial.Eastwest" />
+    </div>
+
+    <div>
+        <label for="Adultsubadult">Adult Subadult:</label>
+        <input type="text" asp-for="Burial.Adultsubadult" />
+    </div>
+
+    <div>
+        <label for="Facebundles">Face Bundles:</label>
+        <input type="text" asp-for="Burial.Facebundles" />
+    </div>
+
+    <div>
+        <label for="Southtohead">South to Head:</label>
+        <input type="text" asp-for="Burial.Southtohead" />
+    </div>
+
+    <div>
+        <label for="Preservation">Preservation:</label>
+        <input type="text" asp-for="Burial.Preservation" />
+    </div>
+
+    <div>
+        <label for="Fieldbookpage">Fieldbook Page:</label>
+        <input type="text" asp-for="Burial.Fieldbookpage" />
+    </div>
+
+    <div>
+        <label for="Squareeastwest">Square East West:</label>
+        <input type="text" asp-for="Burial.Squareeastwest" />
+    </div>
+
+    <div>
+        <label for="Goods">Goods:</label>
+        <input type="text" asp-for="Burial.Goods" />
+    </div>
+
+    <div>
+        <label for="Text">Text:</label>
+        <input type="text" asp-for="Burial.Text" />
+    </div>
+
+    <div>
+        <label for="Wrapping">Wrapping:</label>
+        <input type="text" asp-for="Burial.Wrapping" />
+    </div>
+
+    <div>
+        <label for="Haircolor">
+            Hair Color:
+        </label>
+        <input type="text" asp-for="Burial.Haircolor" />
+    </div>
+    <div>
+        <label for="Westtohead">West to Head:</label>
+        <input type="text" asp-for="Burial.Westtohead" />
+    </div>
+
+    <div>
+        <label for="Samplescollected">Samples Collected:</label>
+        <input type="text" asp-for="Burial.Samplescollected" />
+    </div>
+
+    <div>
+        <label for="Area">Area:</label>
+        <input type="text" asp-for="Burial.Area" />
+    </div>
+
+    <div type="hidden">
+        <label for="Burialid">Burial ID:</label>
+        <input type="number" asp-for="Burial.Burialid" />
+    </div>
+
+    <div>
+        <label for="Length">Length:</label>
+        <input type="text" asp-for="Burial.Length" />
+    </div>
+
+    <div>
+        <label for="Burialnumber">Burial Number:</label>
+        <input type="text" asp-for="Burial.Burialnumber" />
+    </div>
+
+    <div>
+        <label for="Dataexpertinitials">Data Expert Initials:</label>
+        <input type="text" asp-for="Burial.Dataexpertinitials" />
+    </div>
+
+    <div>
+        <label for="Westtofeet">West to Feet:</label>
+        <input type="text" asp-for="Burial.Westtofeet" />
+    </div>
+
+    <div>
+        <label for="Ageatdeath">Age at Death:</label>
+        <input type="text" asp-for="Burial.Ageatdeath" />
+    </div>
+
+    <div>
+        <label for="Southtofeet">South to Feet:</label>
+        <input type="text" asp-for="Burial.Southtofeet" />
+    </div>
+
+    <div>
+        <label for="Excavationrecorder">Excavation Recorder:</label>
+        <input type="text" asp-for="Burial.Excavationrecorder" />
+    </div>
+
+    <div>
+        <label for="Photos">Photos:</label>
+        <input type="text" asp-for="Burial.Photos" />
+    </div>
+
+    <div>
+        <label for="Hair">Hair:</label>
+        <input type="text" asp-for="Burial.Hair" />
+    </div>
+
+    <div>
+        <label for="Burialmaterials">Burial Materials:</label>
+        <input type="text" asp-for="Burial.Burialmaterials" />
+    </div>
+
+    <div>
+        <label for="Dateofexcavation">Date of Excavation:</label>
+        <input type="date" asp-for="Burial.Dateofexcavation" class="form-control" />
+    </div>
+
+    <div>
+        <label for="Fieldbookexcavationyear">Fieldbook Excavation Year:</label>
+        <input type="text" asp-for="Burial.Fieldbookexcavationyear" />
+    </div>
+
+    <div>
+        <label for="Clusternumber">Cluster Number:</label>
+        <input type="text" asp-for="Burial.Clusternumber" />
+    </div>
+
+    <div>
+        <label for="Shaftnumber">Shaft Number:</label>
+        <input type="text" asp-for="Burial.Shaftnumber" />
+    </div>
+    <div>
+        <label for="Estimatestature">Estimated Stature:</label>
+        <input type="text" asp-for="Burial.Estimatestature" />
+    </div>
+
+    <div>
+        <label for="StructureValue">Structure Value:</label>
+        <input type="text" asp-for="Burial.StructureValue" />
+    </div>
+
+    <div>
+        <label for="ColorValue">Color Value:</label>
+        <input type="text" asp-for="Burial.ColorValue" />
+    </div>
+
+    <div>
+        <label for="TextileFunctionValue">Textile Function Value:</label>
+        <input type="text" asp-for="Burial.TextileFunctionValue" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Burial</button>
+</form>
+

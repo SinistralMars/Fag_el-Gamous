@@ -1,0 +1,164 @@
+﻿@model BurialDataModel
+
+    @{
+        ViewData["Title"] = "Predict Head Direction";
+    }
+
+    <form asp-action="Submit" method="post">
+        <h2>Predict Head Direction</h2>
+        <div class="form-group">
+            <label asp-for="SquareNorthSouth"></label>
+            <input asp-for="SquareNorthSouth" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Depth"></label>
+            <input asp-for="Depth" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="SouthToHead"></label>
+            <input asp-for="SouthToHead" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="SquareEastWest"></label>
+            <input asp-for="SquareEastWest" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="WestToHead"></label>
+            <input asp-for="WestToHead" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Length"></label>
+            <input asp-for="Length" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="WestToFeet"></label>
+            <input asp-for="WestToFeet" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="SouthToFeet"></label>
+            <input asp-for="SouthToFeet" class="form-control" />
+        </div>
+            <div class="form-group">
+            <label asp-for="Sex_F">Sex (Female)</label>
+            <input asp-for="Sex_F" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Sex_M">Sex (Male)</label>
+            <input asp-for="Sex_M" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EastWest_W">East West (W)</label>
+            <input asp-for="EastWest_W" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AdultSubAdult_A">Adult Sub Adult (A)</label>
+            <input asp-for="AdultSubAdult_A" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AdultSubAdult_C">Adult Sub Adult (C)</label>
+            <input asp-for="AdultSubAdult_C" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AdultSubAdult_N">Adult Sub Adult (N)</label>
+            <input asp-for="AdultSubAdult_N" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Wrapping_B">Wrapping (B)</label>
+            <input asp-for="Wrapping_B" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Wrapping_H">Wrapping (H)</label>
+            <input asp-for="Wrapping_H" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Wrapping_S">Wrapping (S)</label>
+            <input asp-for="Wrapping_S" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Wrapping_W">Wrapping (W)</label>
+            <input asp-for="Wrapping_W" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="HairColor_A">Hair Color (A)</label>
+            <input asp-for="HairColor_A" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="HairColor_B">Hair Color (B)</label>
+            <input asp-for="HairColor_B" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="HairColor_D">Hair Color (D)</label>
+            <input asp-for="HairColor_D" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="HairColor_K">Hair Color (K)</label>
+            <input asp-for="HairColor_K" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="HairColor_R">Hair Color (R)</label>
+            <input asp-for="HairColor_R" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="SamplesCollected_False">Samples Collected (False)</label>
+            <input asp-for="SamplesCollected_False" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="SamplesCollected_True">Samples Collected (True)</label>
+            <input asp-for="SamplesCollected_True" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="SamplesCollected_Unknown">Samples Collected (Unknown)</label>
+            <input asp-for="SamplesCollected_Unknown" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Area_NNW">Area (NNW)</label>
+            <input asp-for="Area_NNW" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Area_NW">Area (NW)</label>
+            <input asp-for="Area_NW" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Area_SE">Area (SE)</label>
+            <input asp-for="Area_SE" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Area_SW">Area (SW)</label>
+            <input asp-for="Area_SW" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AgeAtDeath_A">Age at Death (A)</label>
+            <input asp-for="AgeAtDeath_A" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AgeAtDeath_C">Age at Death (C)</label>
+            <input asp-for="AgeAtDeath_C" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AgeAtDeath_I">Age at Death (I)</label>
+            <input asp-for="AgeAtDeath_I" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AgeAtDeath_IN">Age at Death (IN)</label>
+            <input asp-for="AgeAtDeath_IN" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AgeAtDeath_N">Age at Death (N)</label>
+            <input asp-for="AgeAtDeath_N" class="form-control" />
+        </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

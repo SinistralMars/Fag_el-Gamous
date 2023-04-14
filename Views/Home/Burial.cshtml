@@ -2,6 +2,116 @@
     ViewData["Title"] = "Burial Summary List and Burial Record Pages";
 }
 
-<div class="text-center">
-    <h1 class="display-4">@ViewData["Title"]</h1>
+@model ProjectsViewModel
+
+<div class="container">
+    <div class="text-center my-4">
+        <h1 class="display-4">@ViewData["Title"]</h1>
+    </div>
+    <form asp-action="Burial" method="get">
+        <div>
+            <label for="sex">Sex:</label>
+            <input type="text" name="sex" value="@Model.FilterSex" />
+        </div>
+
+        <div>
+            <label for="hairColor">Hair Color:</label>
+            <input type="text" name="hairColor" value="@Model.FilterHairColor" />
+        </div>
+
+        <div>
+            <label for="faceBundles">Face Bundles:</label>
+            <input type="text" name="faceBundles" value="@Model.FilterFaceBundles" />
+        </div>
+
+        <div>
+            <label for="ageAtDeath">Age at Death:</label>
+            <input type="text" name="ageAtDeath" value="@Model.FilterAgeAtDeath" />
+        </div>
+
+        <div>
+            <label for="headDirection">Head Direction:</label>
+            <input type="text" name="headDirection" value="@Model.FilterHeadDirection" />
+        </div>
+
+        <div>
+            <label for="depth">Depth:</label>
+            <input type="text" step="any" name="depth" value="@Model.FilterDepth" />
+        </div>
+        <!-- ... (existing filters) -->
+        <!-- new filter inputs -->
+        <div>
+            <label for="Estimatestature">Estimated Stature:</label>
+            <input type="int" name="estimateStature" value="@Model.FilterEstimateStature" />
+        </div>
+
+        <div>
+            <label for="StructureValue">Structure Value:</label>
+            <input type="text" name="structureValue" value="@Model.FilterStructureValue" />
+        </div>
+
+        <div>
+            <label for="ColorValue">Color Value:</label>
+            <input type="text" name="colorValue" value="@Model.FilterColorValue" />
+        </div>
+
+        <div>
+            <label for="TextileFunctionValue">Textile Function Value:</label>
+            <input type="text" name="textileFunctionValue" value="@Model.FilterTextileFunctionValue" />
+        </div>
+
+
+
+        <input type="submit" value="Filter" />
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a asp-action="Add" class="btn btn-primary">Add Burial Record</a>
+        }
+
+    </form>
+
+    <br />
+
+    @foreach (NewTable b in Model.NewTable)
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">ID: @b.Id</h3>
+                        <ul class="list-unstyled">
+                            <li>headdirection: @b.Headdirection</li>
+                            <li>sex: @b.Sex</li>
+                            <li>depth: @b.Depth</li>
+                            <li>adultsubadult: @b.Adultsubadult</li>
+                            <li>text: @b.Text</li>
+                            <li>Hair Color: @b.Haircolor</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="Details" asp-route-id="@b.Id" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+
+    <br />
+    <div page-model="@Model.PageInfo" page-action="Burial" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-primary" class="btn-group pull-right m-1"
+         filter-sex="@Model.FilterSex"
+         filter-hair-color="@Model.FilterHairColor"
+         filter-face-bundles="@Model.FilterFaceBundles"
+         filter-age-at-death="@Model.FilterAgeAtDeath"
+         filter-head-direction="@Model.FilterHeadDirection"
+         filter-depth="@Model.FilterDepth"
+         filter-estimate-stature="@Model.FilterEstimateStature"
+         filter-structure-value="@Model.FilterStructureValue"
+         filter-color-value="@Model.FilterColorValue"
+         filter-textile-function-value="@Model.FilterTextileFunctionValue"></div>
+
 </div>
+<br /><br /><br />

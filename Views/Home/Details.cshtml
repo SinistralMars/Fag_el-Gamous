@@ -1,0 +1,97 @@
+﻿@model NewTable
+@{
+    ViewData["Title"] = "Burial Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">ID:</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+    <dt class="col-sm-3">Square North South:</dt>
+    <dd class="col-sm-9">@Model.Squarenorthsouth</dd>
+    <dt class="col-sm-3">Head Direction:</dt>
+    <dd class="col-sm-9">@Model.Headdirection</dd>
+    <dt class="col-sm-3">Sex:</dt>
+    <dd class="col-sm-9">@Model.Sex</dd>
+    <dt class="col-sm-3">North South:</dt>
+    <dd class="col-sm-9">@Model.Northsouth</dd>
+    <dt class="col-sm-3">Depth:</dt>
+    <dd class="col-sm-9">@Model.Depth</dd>
+    <dt class="col-sm-3">East West:</dt>
+    <dd class="col-sm-9">@Model.Eastwest</dd>
+    <dt class="col-sm-3">Adult Subadult:</dt>
+    <dd class="col-sm-9">@Model.Adultsubadult</dd>
+    <dt class="col-sm-3">Face Bundles:</dt>
+    <dd class="col-sm-9">@Model.Facebundles</dd>
+    <dt class="col-sm-3">South to Head:</dt>
+    <dd class="col-sm-9">@Model.Southtohead</dd>
+    <dt class="col-sm-3">Preservation:</dt>
+    <dd class="col-sm-9">@Model.Preservation</dd>
+    <dt class="col-sm-3">Fieldbook Page:</dt>
+    <dd class="col-sm-9">@Model.Fieldbookpage</dd>
+    <dt class="col-sm-3">Square East West:</dt>
+    <dd class="col-sm-9">@Model.Squareeastwest</dd>
+    <dt class="col-sm-3">Goods:</dt>
+    <dd class="col-sm-9">@Model.Goods</dd>
+    <dt class="col-sm-3">Text:</dt>
+    <dd class="col-sm-9">@Model.Text</dd>
+    <dt class="col-sm-3">Wrapping:</dt>
+    <dd class="col-sm-9">@Model.Wrapping</dd>
+    <dt class="col-sm-3">Hair Color:</dt>
+    <dd class="col-sm-9">@Model.Haircolor</dd>
+    <dt class="col-sm-3">West to Head:</dt>
+    <dd class="col-sm-9">@Model.Westtohead</dd>
+    <dt class="col-sm-3">Samples Collected:</dt>
+    <dd class="col-sm-9">@Model.Samplescollected</dd>
+    <dt class="col-sm-3">Area:</dt>
+    <dd class="col-sm-9">@Model.Area</dd>
+    <dt class="col-sm-3">Burial ID:</dt>
+    <dd class="col-sm-9">@Model.Burialid</dd>
+    <dt class="col-sm-3">Length:</dt>
+    <dd class="col-sm-9">@Model.Length</dd>
+    <dt class="col-sm-3">Burial Number:</dt>
+    <dd class="col-sm-9">@Model.Burialnumber</dd>
+    <dt class="col-sm-3">Data Expert Initials:</dt>
+    <dd class="col-sm-9">@Model.Dataexpertinitials</dd>
+    <dt class="col-sm-3">West to Feet:</dt>
+    <dd class="col-sm-9">@Model.Westtofeet</dd>
+    <dt class="col-sm-3">Age at Death:</dt>
+    <dd class="col-sm-9">@Model.Ageatdeath</dd>
+    <dt class="col-sm-3">South to Feet:</dt>
+    <dd class="col-sm-9">@Model.Southtofeet</dd>
+    <dt class="col-sm-3">Excavation Recorder:</dt>
+    <dd class="col-sm-9">@Model.Excavationrecorder</dd>
+    <dt class="col-sm-3">Photos:</dt>
+    <dd class="col-sm-9">@Model.Photos</dd>
+    <dt class="col-sm-3">Hair:</dt>
+    <dd class="col-sm-9">@Model.Hair</dd>
+    <dt class="col-sm-3">Burial Materials:</dt>
+    <dd class="col-sm-9">@Model.Burialmaterials</dd>
+    <dt class="col-sm-3">Date of Excavation:</dt>
+    <dd class="col-sm-9">@Model.Dateofexcavation?.ToString("yyyy-MM-dd")</dd>
+    <dt class="col-sm-3">Fieldbook Excavation Year:</dt>
+    <dd class="col-sm-9">@Model.Fieldbookexcavationyear</dd>
+    <dt class="col-sm-3">Cluster Number:</dt>
+    <dd class="col-sm-9">@Model.Clusternumber</dd>
+    <dt class="col-sm-3">Shaft Number:</dt>
+    <dd class="col-sm-9">@Model.Shaftnumber</dd>
+    <dt class="col-sm-3">Estimated Stature:</dt>
+    <dd class="col-sm-9">@Model.Estimatestature</dd>
+    <dt class="col-sm-3">Structure Value:</dt>
+    <dd class="col-sm-9">@Model.StructureValue</dd>
+    <dt class="col-sm-3">Color Value:</dt>
+    <dd class="col-sm-9">@Model.ColorValue</dd>
+    <dt class="col-sm-3">Textile Function Value:</dt>
+    <dd class="col-sm-9">@Model.TextileFunctionValue</dd>
+</dl>
+<div class="mt-4">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+
+    }
+
+    <a asp-action="Burial" class="btn btn-secondary">Back to List</a>
+    </div>

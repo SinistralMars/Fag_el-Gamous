@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Fag el-Gamous</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
 </head>
 <body>
     <header>
@@ -26,17 +27,22 @@
                                 <a class="nav-link text-dark nav-link-text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark nav-link-text" asp-area="" asp-controller="Home" asp-action="Burial">Burial Summary List & Record Pages</a>
+                                <a class="nav-link text-dark nav-link-text" asp-area="" asp-controller="Home" asp-action="Burial">Burial Summary</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark nav-link-text" asp-area="" asp-controller="Home" asp-action="Supervised">Supervised Analysis</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark nav-link-text" href="#" id="navbarDropdownAnalysis" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Analysis</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownAnalysis">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Prediction" asp-action="Index">Supervised Analysis</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Unsupervised">Unsupervised Analysis</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark nav-link-text" asp-area="" asp-controller="Home" asp-action="Unsupervised">Unsupervised Analysis</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark nav-link-text" asp-area="" asp-controller="Home" asp-action="Admin">Administrative</a>
-                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark nav-link-text" asp-area="" asp-controller="Home" asp-action="Admin">Administrative</a>
+                                </li>
+                            }
+
                             <partial name="_LoginPartial" />
                         </ul>
                     </div>
@@ -53,10 +59,11 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Fag el-Gamous - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="container text-center">
+            &copy; 2023 - BRIGHAM YOUNG UNIVERSITY - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

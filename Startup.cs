@@ -14,8 +14,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using MySql.EntityFrameworkCore;
-
-
+using Fag_el_Gamous.Models;
+using Amazon.SecretsManager;
+using Amazon.SecretsManager.Model;
 
 namespace Fag_el_Gamous
 {
@@ -31,6 +32,8 @@ namespace Fag_el_Gamous
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IFagelGamousRepository, EFFagelGamousRepository>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential 
@@ -38,8 +41,11 @@ namespace Fag_el_Gamous
                 options.CheckConsentNeeded = context => true;
                 // requires using Microsoft.AspNetCore.Http;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
+               //  var options = new CookiePolicyOptions();
+                options.ConsentCookie.SecurePolicy = CookieSecurePolicy.Always;
             });
 
+            // Password requirements
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -49,19 +55,36 @@ namespace Fag_el_Gamous
                 options.Password.RequiredLength = 12;
             });
 
+            // HSTS requirement
             services.AddHsts(options =>
             {
                 options.IncludeSubDomains = true;
                 options.MaxAge = TimeSpan.FromDays(365);
             });
 
+            //Database for user authentication
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseMySQL(Configuration["ConnectionStrings:MainConnection"]);
+            });
+
+            //Database for burial info
+            services.AddDbContext<BurialContext>(options =>
+            {
+                options.UseNpgsql(Configuration["ConnectionStrings:BurialConnection"]);
+            });
+
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -93,15 +116,20 @@ namespace Fag_el_Gamous
             app.Use(async (context, next) =>
             {
                 string scriptHash = "'sha256-m1igTNlg9PL5o60ru2HIIK6OPQet2z9UgiEAhCyg/RU='";
-                context.Response.Headers.Add("Content-Security-Policy", $"default-src 'self'; script-src 'self' http://www.w3.org {scriptHash} 'nonce-J0joD1o'; font-src 'self'; img-src 'self' http://www.w3.org data:; frame-src 'self'; style-src 'self' 'unsafe-hashes' 'sha256-aqNNdDLnnrDOnTNdkJpYlAxKVJtLt9CtFLklmInuUAE='");
+                context.Response.Headers.Add("Content-Security-Policy", $"default-src 'self'; script-src 'self' http://www.w3.org {scriptHash} 'nonce-J0joD1o'; font-src 'self'; img-src 'self' http://www.w3.org data:; frame-src 'self'; style-src 'self' 'unsafe-hashes' 'sha256-aqNNdDLnnrDOnTNdkJpYlAxKVJtLt9CtFLklmInuUAE=' 'sha256-zNKhlN0wtj8TVJ20RuIjNArjRLBf4ddugEFnDzX1Aos=' 'sha256-9KmcHQCuKbiZDnrghoC9HOmY49nvpfQTG0riBGcLFt0=' 'sha256-j/K1G9wQNbYz7sx/HppMAseOdTHh3MvUzs2vf+DupMQ='");
                 await next();
             });
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllerRoute(
+                        name: "controller-action",
+                        pattern: "{controller=Home}/{action=Index}/{id?}");    
+                });
+                endpoints.MapDefaultControllerRoute();
+
                 endpoints.MapRazorPages();
             });
         }
